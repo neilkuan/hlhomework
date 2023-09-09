@@ -9,3 +9,11 @@ go build -o app
 ```
 docker build -t go-app .
 ```
+
+
+### Use exist image from github container registry
+```bash
+docker pull ghcr.io/neilkuan/hlhomework:amd64
+
+docker run -d -p 8080:8080 ghcr.io/neilkuan/hlhomework:amd64
+```
