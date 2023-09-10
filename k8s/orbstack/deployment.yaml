@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hlhomework
+  name: hlhomework
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hlhomework
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: hlhomework
+    spec:
+      containers:
+      - image: ghcr.io/neilkuan/hlhomework:amd64
+        name: hlhomework
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          failureThreshold: 2
+          httpGet:
+            path: /healthz
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "50m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"

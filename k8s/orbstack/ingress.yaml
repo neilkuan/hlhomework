@@ -1,0 +1,17 @@
+apiVersion: "networking.k8s.io/v1"
+kind: "Ingress"
+metadata:
+  name: "hlhomework"
+spec:
+  ingressClassName: nginx
+  rules: 
+    - host: www.orb.neilkuan.net
+      http: 
+        paths:       
+        - path: "/"
+          pathType: "Prefix"
+          backend: 
+            service: 
+              name: hlhomework
+              port: 
+                number: 8080

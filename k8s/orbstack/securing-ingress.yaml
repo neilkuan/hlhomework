@@ -1,0 +1,23 @@
+apiVersion: "networking.k8s.io/v1"
+kind: "Ingress"
+metadata:
+  name: "hlhomework"
+  annotations:
+    cert-manager.io/issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - "www.orb.neilkuan.net"
+    secretName: hlhomework-tls
+  rules: 
+    - host: www.orb.neilkuan.net
+      http: 
+        paths:       
+        - path: "/"
+          pathType: "Prefix"
+          backend: 
+            service: 
+              name: hlhomework
+              port: 
+                number: 8080
