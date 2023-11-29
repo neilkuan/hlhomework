@@ -50,3 +50,4 @@ kubectl -n ingress-nginx  port-forward svc/ingress-nginx-controller 8443:443
 ```
 ![](./dashboard-1.png)
 ![](./dashboard-2.png)
+![](./dashboard-3.png)
